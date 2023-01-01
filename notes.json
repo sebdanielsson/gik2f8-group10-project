@@ -1,0 +1,4 @@
+[
+    { "id": 0, "title": "En vanlig rubrikkk", "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod...", "editDate": "1/1/2023, 9:18:17 PM", "pinned": false },
+    { "id": 1, "title": "En vanlig rubrik 3", "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. 3", "editDate": "1/1/2023, 9:29:31 PM", "pinned": false }
+]
