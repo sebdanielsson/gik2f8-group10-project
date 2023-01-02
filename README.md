@@ -4,7 +4,7 @@
 
 <https://sebdanielsson.github.io/gik2f8-group10-project>
 
-<https://gik2f8-group10-project-todo.herokuapp.com>
+<https://gik2f8-group10-project.herokuapp.com>
 
 ## Features
 
