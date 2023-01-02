@@ -47,29 +47,28 @@ window.addEventListener("load", () => {
 });
 
 // Validate fields
-noteForm.titleField.addEventListener("input", (e) => validateForm(e.target));
-noteForm.titleField.addEventListener("blur", (e) => validateForm(e.target));
+noteForm.contentField.addEventListener("input", (e) => validateForm(e.target));
+noteForm.contentField.addEventListener("blur", (e) => validateForm(e.target));
 
-let titleValid = false;
+let contentValid = false;
 function validateForm(field) {
     if (field.value.length > 0) {
-        if (titleWarning) {
-            titleWarning.style.display = "none";
+        if (contentWarning) {
+            contentWarning.style.display = "none";
         }
-        titleValid = true;
+        contentValid = true;
     } else {
-        if (titleWarning) {
-            titleWarning.style.display = "block";
+        if (contentWarning) {
+            contentWarning.style.display = "block";
         }
-        titleValid = false;
+        contentValid = false;
     }
 }
 
 // Submit form
 function addNoteButton() {
-    if (titleValid) {
+    if (contentValid) {
         const newNote = {
-            title: noteForm.titleField.value,
             content: noteForm.contentField.value,
             editDate: new Date().toLocaleString(),
             pinned: false,
@@ -139,11 +138,11 @@ function renderNotes() {
     });
 }
 
-function renderNotesHTML({ id, title, content, editDate, pinned }) {
+function renderNotesHTML({ id, content, editDate, pinned }) {
     let html = `
     <li onclick="previewNoteHTML(${id})" class="cursor-pointer flex flex-col p-4 rounded-xl bg-[#F2EDEC]/50 dark:bg-[#2D221D]/50 backdrop-blur-lg backdrop-saturate-[0.85] text-slate-900 dark:text-slate-50">
     <div class="flex flex-row">
-    <h6 class="text-lg font-semibold inline truncate text-slate-800 dark:text-slate-300">${title}</h6>
+    <span class="noteDate text-sm">${editDate}</span>
     <div class="ml-auto">
     <button onclick="event.stopPropagation();updateCompletion(${id})">
     `;
@@ -164,8 +163,7 @@ function renderNotesHTML({ id, title, content, editDate, pinned }) {
     </button>
     </div>
     </div>
-    <span class="noteDate text-sm">${editDate}</span>
-    <p class="text-base w-full overflow-hidden whitespace-nowrap text-ellipsis">${content}</p>
+    <p class="text-base overflow-hidden whitespace-nowrap text-ellipsis">${content}</p>
     </li>
     `;
     return html;
@@ -180,7 +178,7 @@ function previewNoteHTML(id) {
             notePreview.classList.remove("hidden");
             let html = `
             <div class="flex flex-row">
-                <h3 class="font-['Wendy_One'] text-4xl font-semibold inline truncate text-slate-800 dark:text-slate-300">${note.title}</h6>
+            <span class="noteDate text-sm">Last edit: ${note.editDate}</span>
                 <div class="ml-auto">
                 <button onclick="event.stopPropagation();updateCompletion(${id})">
             `;
@@ -208,8 +206,11 @@ function previewNoteHTML(id) {
                 </button>
                 </div>
                 </div>
-                <span class="noteDate text-sm">Last edit: ${note.editDate}</span>
-                <p class="text-base break-all">${note.content}</p>
+                <div id="content" class="markdown-body !bg-transparent overflow-x-scroll">
+            `;
+            html += marked.parse(note.content);
+            html += `
+                </div>
             `;
             notePreview.innerHTML = html;
         }
@@ -229,13 +230,11 @@ function editNoteButton(id) {
             noteForm.addButton.classList.add("hidden");
 
             // Fill form with note data
-            noteForm.titleField.value = note.title;
             noteForm.contentField.value = note.content;
 
             // Add event listener to update button
             noteForm.updateButton.onclick = (event) => {
                 const updatedNote = {
-                    title: noteForm.titleField.value,
                     content: noteForm.contentField.value,
                     editDate: new Date().toLocaleString(),
                 };
@@ -284,6 +283,5 @@ function deleteNote(id) {
 
 // Clear form
 function clearForm() {
-    noteForm.titleField.value = "";
     noteForm.contentField.value = "";
 }

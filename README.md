@@ -8,6 +8,7 @@
 
 ## Features
 
+* Markdown support (Experimental)
 * Switch between system, dark and light color scheme
 * Build test on new PR
 * Automatic build and deploy on commit on main branch
@@ -17,4 +18,3 @@
 
 * Responsive design [WiP]
 * API authentication with OAuth
-* Markdown support
