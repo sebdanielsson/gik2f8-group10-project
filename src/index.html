@@ -23,14 +23,14 @@
         </script>
     </head>
 
-    <body class="grid place-items-center bg-gradient-to-t from-yellow-300 via-yellow-400 to-yellow-600">
-        <div class="w-full flex flex-row justify-center">
-            <h1 class="mt-4 font-['Wendy_One'] text-5xl text-yellow-900 text-center">Notes.app</h1>
-            <div class="flex flex-row absolute right-4 top-4 gap-3">
+    <body class="flex flex-col min-h-screen place-items-center bg-gradient-to-t from-yellow-300 via-yellow-400 to-yellow-600">
+        <div class="flex flex-row">
+            <h1 class="mt-4 font-['Wendy_One'] text-5xl text-yellow-900">Notes.app</h1>
+            <div class="flex flex-row place-items-center absolute right-4 top-4 gap-3">
                 <div class="group">
-                    <button title="Theme Switcher" class="text-white font-medium rounded-lg text-sm text-center inline-flex items-center" type="button">
+                    <button title="Theme Switcher" class="text-white font-medium rounded-lg text-sm" type="button">
                         <span class="dark:hidden">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                            <svg viewBox="0 0 22 22" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
                                 <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" class="fill-rose-500/20 stroke-white"></path>
                                 <path d="M12 4v1M17.66 6.344l-.828.828M20.005 12.004h-1M17.66 17.664l-.828-.828M12 20.01V19M6.34 17.664l.835-.836M3.995 12.004h1.01M6 6l.835.836" class="stroke-white"></path>
                             </svg>
@@ -43,7 +43,7 @@
                             </svg>
                         </span>
                     </button>
-                    <div id="dropdown" class="hidden group-hover:block absolute -translate-x-1/2 group-hover:text-white bg-white rounded dark:bg-[#2D221D]/80 backdrop-blur-lg backdrop-saturate-[0.85]">
+                    <div id="dropdown" class="hidden group-hover:block absolute -left-1/2 group-hover:text-white bg-white rounded dark:bg-[#2D221D]/80 backdrop-blur-lg backdrop-saturate-[0.85]">
                         <ul class="font-semibold text-sm text-gray-700 dark:text-gray-200">
                             <li>
                                 <a href="#" id="theme-system" class="flex items-center py-2 px-2 hover:text-slate-400 dark:hover:text-slate-400">
@@ -77,17 +77,17 @@
                     </div>
                 </div>
                 <a href="https://github.com/SebDanielsson/gik2f8-h21sebda-lab2" target="_blank" rel="noopener" class="text-white hover:opacity-80" aria-label="GitHub repository">
-                    <svg viewBox="0 0 16 16" class="w-6 h-6" fill="currentColor" aria-hidden="true">
+                    <svg viewBox="0 0 18 18" class="w-6 h-6" fill="currentColor" aria-hidden="true">
                         <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
                     </svg>
                 </a>
             </div>
         </div>
-        <main class="flex flex-row m-4 w-full lg:11/12 md:w-8/12 sm:w-9/12 min-h-screen">
-            <div class="flex flex-col gap-2 w-5/12 items-stretch p-4 rounded-l-lg bg-[#F2EDEC]/30 dark:bg-[#2D221D]/30 backdrop-blur-lg backdrop-saturate-[0.85]">
+        <main class="flex flex-grow flex-row m-4 lg:11/12 md:w-8/12 sm:w-9/12">
+            <div class="flex flex-col gap-2 w-5/12 p-4 rounded-l-lg bg-[#F2EDEC]/30 dark:bg-[#2D221D]/30 backdrop-blur-lg backdrop-saturate-[0.85]">
                 <ul id="noteList" class="flex flex-col gap-2 w-full rounded-lg"></ul>
             </div>
-            <div class="flex flex-col gap-2 w-full items-stretch p-4 rounded-r-lg bg-slate-50 dark:bg-[#2D221D]">
+            <div class="flex flex-col gap-2 w-full p-4 rounded-r-lg bg-slate-50 dark:bg-[#2D221D]">
                 <div id="notePreview" class="flex flex-col text-slate-900 dark:text-slate-50"></div>
                 <div id="noteEditor" class="hidden flex-col gap-2">
                     <form id="noteForm" name="noteForm" class="flex flex-col gap-2">
