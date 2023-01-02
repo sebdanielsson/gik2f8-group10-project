@@ -1,4 +1,4 @@
 [
-    { "id": 0, "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod...", "editDate": "1/1/2023, 9:18:17 PM", "pinned": false },
-    { "id": 1, "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. 3", "editDate": "1/1/2023, 9:29:31 PM", "pinned": false }
+    { "id": 0, "content": "# First 15 lines of code in script.js\n\n```js\n\"use strict\";\n\n// Check if user prefers dark mode\nconst prefersDarkMode = window.matchMedia(\"(prefers-color-scheme: dark)\");\n\n// Follow user's system theme preference if no website theme preference is set\nprefersDarkMode.addEventListener(\"change\", (event) => {\n    if (!localStorage.getItem(\"theme\")) {\n        if (event.matches) {\n            document.documentElement.classList.add(\"dark\");\n        } else {\n            document.documentElement.classList.remove(\"dark\");\n        }\n    }\n});\n```", "editDate": "2023-01-02 15:13:06", "pinned": false },
+    { "id": 1, "content": "# This is a markdown title\n\nLorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.", "editDate": "2023-01-02 15:13:24", "pinned": false }
 ]
