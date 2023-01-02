@@ -86,6 +86,7 @@ function showAddFormButton() {
     notePreview.classList.add("hidden");
     noteEditor.classList.remove("hidden");
     noteEditor.classList.add("flex");
+    noteForm.contentField.focus();
 }
 
 // Submit form
