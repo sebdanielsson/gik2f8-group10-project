@@ -93,9 +93,8 @@
                 <div id="notePreview" class="flex flex-col text-slate-800 dark:text-slate-300"></div>
                 <div id="noteEditor" class="hidden flex-col gap-2">
                     <form id="noteForm" name="noteForm" class="flex flex-col gap-2">
-                        <input type="text" id="titleField" name="titleField" placeholder="New note" minlength="1" required class="h-12 select-none w-full block rounded-lg border p-4 text-base text-slate-700 dark:text-white bg-slate-100 border-slate-300 dark:border-opacity-40 placeholder-slate-300 dark:placeholder-slate-200 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:ring-offset-1 ring-offset-slate-400 dark:bg-white dark:bg-opacity-5 dark:backdrop-blur-lg dark:backdrop-saturate-[0.85]" />
-                        <span id="titleWarning" class="hidden text-sm text-rose-900 dark:text-rose-100">Empty title is not allowed.</span>
                         <textarea type="text" id="contentField" name="contentField" rows="8" class="h-48 select-none w-full block rounded-lg border p-4 text-base text-slate-700 dark:text-white bg-slate-100 border-slate-300 dark:border-opacity-40 placeholder-slate-300 dark:placeholder-slate-200 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:ring-offset-1 ring-offset-slate-400 dark:bg-white dark:bg-opacity-5 dark:backdrop-blur-lg dark:backdrop-saturate-[0.85]" placeholder="Content"></textarea>
+                        <span id="contentWarning" class="hidden text-sm text-rose-900 dark:text-rose-100">Empty note is not allowed.</span>
                     </form>
                     <div id="submitFormContainer" class="flex flex-row gap-2 basis-auto">
                         <button onclick="addNoteButton()" type="button" form="noteForm" id="addButton" name="addButton" class="w-full inline-flex items-center rounded-md border border-transparent bg-slate-800 px-4 py-3 text-sm font-medium text-white shadow-sm hover:bg-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:ring-offset-1 ring-offset-slate-400">
