@@ -6,8 +6,8 @@
         "start": "node app.mjs",
         "dev": "nodemon app.mjs",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "tailwind-dev": "npx tailwindcss -o ./src/output.css --watch",
-        "build": "npx tailwindcss -o ./build/output.css;mkdir -p ./build; ls -1 ./src/ | grep -v ^input.css | grep -v ^.DS_Store | xargs -I{} mv src/{} ./build;cp README.md ./build/README.md"
+        "tailwind-dev": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch",
+        "build": "npx tailwindcss -i ./src/input.css -o ./build/output.css;mkdir -p ./build; ls -1 ./src/ | grep -v ^input.css | grep -v ^.DS_Store | xargs -I{} mv src/{} ./build;cp README.md ./build/README.md"
     },
     "author": {
         "name": "Sebastian Danielsson",
