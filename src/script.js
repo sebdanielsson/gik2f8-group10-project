@@ -3,13 +3,25 @@
 // Check if user prefers dark mode
 const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
 
+// Add onload event listener
+window.addEventListener("load", () => {
+    if (prefersDarkMode.matches) {
+        document.documentElement.classList.add("dark");
+        document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+        document.documentElement.setAttribute("data-theme", "light");
+    }
+});
+
 // Follow user's system theme preference if no website theme preference is set
 prefersDarkMode.addEventListener("change", (event) => {
-    if (!localStorage.getItem("theme")) {
+    if (!localStorage.getItem("data-theme")) {
         if (event.matches) {
             document.documentElement.classList.add("dark");
+            document.documentElement.setAttribute("data-theme", "dark");
         } else {
             document.documentElement.classList.remove("dark");
+            document.documentElement.setAttribute("data-theme", "light");
         }
     }
 });
@@ -22,20 +34,24 @@ const themeDark = document.getElementById("theme-dark");
 themeSystem.addEventListener("click", () => {
     if (prefersDarkMode.matches) {
         document.documentElement.classList.add("dark");
+        document.documentElement.setAttribute("data-theme", "dark");
     } else {
         document.documentElement.classList.remove("dark");
-        localStorage.removeItem("theme");
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.removeItem("data-theme");
     }
 });
 
 themeLight.addEventListener("click", () => {
     document.documentElement.classList.remove("dark");
-    localStorage.setItem("theme", "light");
+    document.documentElement.setAttribute("data-theme", "light");
+    localStorage.setItem("data-theme", "light");
 });
 
 themeDark.addEventListener("click", () => {
     document.documentElement.classList.add("dark");
-    localStorage.setItem("theme", "dark");
+    document.documentElement.setAttribute("data-theme", "dark");
+    localStorage.setItem("data-theme", "dark");
 });
 
 // Create new API instance
@@ -65,12 +81,19 @@ function validateForm(field) {
     }
 }
 
+// Show add note form
+function showAddFormButton() {
+    notePreview.classList.add("hidden");
+    noteEditor.classList.remove("hidden");
+    noteEditor.classList.add("flex");
+}
+
 // Submit form
 function addNoteButton() {
     if (contentValid) {
         const newNote = {
             content: noteForm.contentField.value,
-            editDate: new Date().toLocaleString(),
+            editDate: new Date().toLocaleString().substring(0, new Date().toLocaleString().length - 3),
             pinned: false,
         };
         addNote(newNote);
@@ -142,7 +165,7 @@ function renderNotesHTML({ id, content, editDate, pinned }) {
     let html = `
     <li onclick="previewNoteHTML(${id})" class="cursor-pointer flex flex-col p-4 rounded-xl bg-[#F2EDEC]/50 dark:bg-[#2D221D]/50 backdrop-blur-lg backdrop-saturate-[0.85] text-slate-900 dark:text-slate-50">
     <div class="flex flex-row">
-    <span class="noteDate text-sm">${editDate}</span>
+    <span class="noteDate text-xs">${editDate}</span>
     <div class="ml-auto">
     <button onclick="event.stopPropagation();updateCompletion(${id})">
     `;
@@ -163,7 +186,7 @@ function renderNotesHTML({ id, content, editDate, pinned }) {
     </button>
     </div>
     </div>
-    <p class="text-base overflow-hidden whitespace-nowrap text-ellipsis">${content}</p>
+    <p class="text-sm overflow-hidden whitespace-nowrap text-ellipsis">${content}</p>
     </li>
     `;
     return html;
@@ -236,7 +259,7 @@ function editNoteButton(id) {
             noteForm.updateButton.onclick = (event) => {
                 const updatedNote = {
                     content: noteForm.contentField.value,
-                    editDate: new Date().toLocaleString(),
+                    editDate: new Date().toLocaleString().substring(0, new Date().toLocaleString().length - 3),
                 };
 
                 // Note updated successfully

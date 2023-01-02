@@ -7,3 +7,7 @@
         @apply list-disc;
     }
 }
+
+.markdown-body {
+    --color-fg-default: inherit !important;
+}

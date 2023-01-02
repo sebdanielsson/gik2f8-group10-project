@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="min-h-screen">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,8 @@
         <link rel="icon" type="image/png" href="./notes.webp" />
         <link rel="apple-touch-icon" href="./notes.webp" />
         <link href="./output.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.css" integrity="sha512-Av8h36R+zgh5kcdZXursq5ZiKVOEQ/K/M4lZcFsbPJMKfrRaUXatxZERx2s6LzAfVUcWg90Yycl4Gsfdgfd29A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="./github-markdown-dark.css" rel="stylesheet" />
+        <link href="./github-markdown-light.css" rel="stylesheet" />
         <title>Notes.app</title>
         <style>
             @font-face {
@@ -24,10 +25,9 @@
         </script>
     </head>
 
-    <body class="flex flex-col min-h-screen place-items-center bg-gradient-to-t from-yellow-300 via-yellow-400 to-yellow-600">
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <body class="flex flex-col mx-4 mb-4 place-items-center bg-gradient-to-t from-yellow-300 via-yellow-400 to-yellow-600">
         <div class="flex flex-row">
-            <h1 class="mt-4 font-['Wendy_One'] text-5xl text-yellow-900">Notes.app</h1>
+            <h1 class="my-4 font-['Wendy_One'] text-5xl text-yellow-900">Notes.app</h1>
             <div class="flex flex-row place-items-center absolute right-4 top-4 gap-3">
                 <div class="group">
                     <button title="Theme Switcher" class="text-white font-medium rounded-lg text-sm" type="button">
@@ -85,15 +85,20 @@
                 </a>
             </div>
         </div>
-        <main class="flex flex-grow flex-row m-4 lg:w-10/12 md:w-8/12 sm:w-9/12">
+        <main class="flex flex-grow flex-row w-full sm:w-10/12">
             <div class="flex flex-col gap-2 w-4/12 p-4 rounded-l-lg bg-[#F2EDEC]/30 dark:bg-[#2D221D]/30 backdrop-blur-lg backdrop-saturate-[0.85]">
+                <button onclick="showAddFormButton()" type="button" title="Add note" class="ml-auto text-black dark:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                </button>
                 <ul id="noteList" class="flex flex-col gap-2 rounded-lg"></ul>
             </div>
             <div class="flex flex-col gap-2 w-8/12 p-4 rounded-r-lg bg-slate-50 dark:bg-[#2D221D]">
                 <div id="notePreview" class="flex flex-col text-slate-800 dark:text-slate-300"></div>
                 <div id="noteEditor" class="hidden flex-col gap-2">
                     <form id="noteForm" name="noteForm" class="flex flex-col gap-2">
-                        <textarea type="text" id="contentField" name="contentField" rows="8" class="h-48 select-none w-full block rounded-lg border p-4 text-base text-slate-700 dark:text-white bg-slate-100 border-slate-300 dark:border-opacity-40 placeholder-slate-300 dark:placeholder-slate-200 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:ring-offset-1 ring-offset-slate-400 dark:bg-white dark:bg-opacity-5 dark:backdrop-blur-lg dark:backdrop-saturate-[0.85]" placeholder="Content"></textarea>
+                        <textarea type="text" id="contentField" name="contentField" rows="8" class="h-48 select-none w-full block rounded-lg border p-4 text-base text-slate-700 dark:text-white bg-slate-100 border-slate-300 dark:border-opacity-40 placeholder-slate-300 dark:placeholder-slate-200 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:ring-offset-1 ring-offset-slate-400 dark:bg-white dark:bg-opacity-5 dark:backdrop-blur-lg dark:backdrop-saturate-[0.85]"></textarea>
                         <span id="contentWarning" class="hidden text-sm text-rose-900 dark:text-rose-100">Empty note is not allowed.</span>
                     </form>
                     <div id="submitFormContainer" class="flex flex-row gap-2 basis-auto">
@@ -111,5 +116,6 @@
         </main>
         <script src="Api.js"></script>
         <script src="script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     </body>
 </html>
