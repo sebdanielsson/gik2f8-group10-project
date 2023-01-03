@@ -120,7 +120,7 @@ function renderNotes() {
     api.getAll().then((notes) => {
         try {
             if (notes && notes.length === 0) {
-                noteList.innerHTML = `<li class="text-center py-3"><span class="text-2xl">No notes added.</span></li>`;
+                noteList.innerHTML = `<li class="list-none text-center py-3"><span class="text-xl text-black dark:text-yellow-50">No notes added.</span></li>`;
             } else if (notes && notes.length > 0) {
                 // Sort notes by last edit
                 notes.sort((a, b) => {
