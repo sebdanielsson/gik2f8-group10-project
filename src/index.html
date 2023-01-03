@@ -86,7 +86,7 @@
             </div>
         </div>
         <main class="flex flex-grow flex-col md:flex-row w-full md:w-10/12">
-            <div class="flex flex-col gap-2 md:w-4/12 p-4 rounded-t-lg md:rounded-l-lg bg-[#F2EDEC]/30 dark:bg-[#2D221D]/30 backdrop-blur-lg backdrop-saturate-[0.85]">
+            <div class="flex flex-col gap-2 md:w-4/12 p-4 rounded-t-lg md:rounded-r-none md:rounded-l-lg bg-[#F2EDEC]/30 dark:bg-[#2D221D]/30 backdrop-blur-lg backdrop-saturate-[0.85]">
                 <button onclick="showAddFormButton()" type="button" title="Add note" class="ml-auto text-black dark:text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -94,8 +94,10 @@
                 </button>
                 <ul id="noteList" class="flex flex-col gap-2 rounded-lg"></ul>
             </div>
-            <div class="flex flex-col gap-2 md:w-8/12 p-4 rounded-b-lg md:rounded-r-lg bg-slate-50 dark:bg-[#2D221D]">
-                <div id="notePreview" class="flex flex-col text-slate-800 dark:text-slate-300"></div>
+            <div class="flex flex-col gap-2 md:w-8/12 p-4 rounded-b-lg md:rounded-l-none md:rounded-r-lg bg-slate-50 dark:bg-[#2D221D]">
+                <div id="notePreview" class="flex flex-col text-slate-800 dark:text-slate-300">
+                    <p class="text-sm text-center">Notes can be formatted with markdown.</p>
+                </div>
                 <div id="noteEditor" class="hidden flex-col gap-2">
                     <form id="noteForm" name="noteForm" class="flex flex-col gap-2">
                         <textarea title="Note editor" type="text" id="contentField" name="contentField" rows="8" class="h-48 select-none w-full block rounded-lg border p-4 text-base text-slate-700 dark:text-white bg-slate-100 border-slate-300 dark:border-opacity-40 placeholder-slate-300 dark:placeholder-slate-200 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:ring-offset-1 ring-offset-slate-400 dark:bg-white dark:bg-opacity-5 dark:backdrop-blur-lg dark:backdrop-saturate-[0.85]"></textarea>
