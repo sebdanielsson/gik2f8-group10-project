@@ -8,7 +8,8 @@
 
 ## Features
 
-* Markdown support (Experimental)
+* Markdown support
+* Responsive layout
 * Switch between system, dark and light color scheme
 * Build test on new PR
 * Automatic build and deploy on commit on main branch
@@ -16,5 +17,5 @@
 
 ## Missing features
 
-* Responsive design [WiP]
+* Syntax highlighting
 * API authentication with OAuth
