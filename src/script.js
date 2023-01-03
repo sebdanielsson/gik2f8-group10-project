@@ -163,6 +163,11 @@ function renderNotes() {
 }
 
 function renderNotesHTML({ id, content, editDate, pinned }) {
+    let firstLine = content.split("\n")[0];
+    if (firstLine.startsWith("#")) {
+        firstLine = firstLine.substring(1);
+    }
+
     let html = `
     <li onclick="previewNoteHTML(${id})" class="cursor-pointer flex flex-col p-4 rounded-xl bg-[#F2EDEC]/50 dark:bg-[#2D221D]/50 backdrop-blur-lg backdrop-saturate-[0.85] text-slate-900 dark:text-slate-50">
         <div class="flex flex-row">
@@ -192,7 +197,7 @@ function renderNotesHTML({ id, content, editDate, pinned }) {
     </button>
     </div>
     </div>
-    <p class="text-sm overflow-hidden whitespace-nowrap text-ellipsis">${content}</p>
+    <div class="text-sm overflow-hidden whitespace-nowrap text-ellipsis">${firstLine}</div>
     </li>
     `;
     return html;
