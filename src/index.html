@@ -28,7 +28,7 @@
     <body class="flex flex-col mx-4 mb-4 place-items-center bg-gradient-to-t from-yellow-300 via-yellow-400 to-yellow-600">
         <div class="flex flex-row">
             <h1 class="my-4 font-['Wendy_One'] text-5xl text-yellow-900">Notes.app</h1>
-            <div class="flex flex-row place-items-center absolute right-4 top-4 gap-3">
+            <div class="flex flex-row place-items-center absolute right-4 top-4 gap-3 z-10">
                 <div class="group">
                     <button title="Theme Switcher" class="text-white font-medium rounded-lg text-sm" type="button">
                         <span class="dark:hidden">
@@ -85,8 +85,8 @@
                 </a>
             </div>
         </div>
-        <main class="flex flex-grow flex-row w-full sm:w-10/12">
-            <div class="flex flex-col gap-2 w-4/12 p-4 rounded-l-lg bg-[#F2EDEC]/30 dark:bg-[#2D221D]/30 backdrop-blur-lg backdrop-saturate-[0.85]">
+        <main class="flex flex-grow flex-col md:flex-row w-full md:w-10/12">
+            <div class="flex flex-col gap-2 md:w-4/12 p-4 rounded-t-lg md:rounded-l-lg bg-[#F2EDEC]/30 dark:bg-[#2D221D]/30 backdrop-blur-lg backdrop-saturate-[0.85]">
                 <button onclick="showAddFormButton()" type="button" title="Add note" class="ml-auto text-black dark:text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -94,7 +94,7 @@
                 </button>
                 <ul id="noteList" class="flex flex-col gap-2 rounded-lg"></ul>
             </div>
-            <div class="flex flex-col gap-2 w-8/12 p-4 rounded-r-lg bg-slate-50 dark:bg-[#2D221D]">
+            <div class="flex flex-col gap-2 md:w-8/12 p-4 rounded-b-lg md:rounded-r-lg bg-slate-50 dark:bg-[#2D221D]">
                 <div id="notePreview" class="flex flex-col text-slate-800 dark:text-slate-300"></div>
                 <div id="noteEditor" class="hidden flex-col gap-2">
                     <form id="noteForm" name="noteForm" class="flex flex-col gap-2">
