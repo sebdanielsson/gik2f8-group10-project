@@ -87,6 +87,9 @@ function showAddFormButton() {
     noteEditor.classList.remove("hidden");
     noteEditor.classList.add("flex");
     noteForm.contentField.focus();
+    noteForm.updateButton.classList.add("hidden");
+    noteForm.cancelUpdateButton.classList.remove("hidden");
+    noteForm.addButton.classList.remove("hidden");
 }
 
 // Submit form
@@ -103,7 +106,7 @@ function addNoteButton() {
     }
 }
 
-// Add note
+// Create note
 function addNote(newNote) {
     api.create(newNote).then((note) => {
         if (note) {
@@ -113,7 +116,7 @@ function addNote(newNote) {
     });
 }
 
-// Render notes
+// Render note list
 function renderNotes() {
     noteList.innerHTML = "";
 
@@ -162,6 +165,7 @@ function renderNotes() {
     });
 }
 
+// Render note HTML
 function renderNotesHTML({ id, content, editDate, pinned }) {
     let firstLine = content.split("\n")[0];
     if (firstLine.startsWith("#")) {
@@ -173,7 +177,7 @@ function renderNotesHTML({ id, content, editDate, pinned }) {
         <div class="flex flex-row">
             <span class="noteDate text-xs">${editDate}</span>
             <div class="ml-auto">
-                <button onclick="event.stopPropagation();updateCompletion(${id})">
+                <button onclick="event.stopPropagation();updatePinned(${id})">
     `;
     !pinned &&
         (html += `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
@@ -214,7 +218,7 @@ function previewNoteHTML(id) {
             <div class="flex flex-row">
             <span class="noteDate text-sm">Last edit: ${note.editDate}</span>
                 <div class="ml-auto">
-                <button onclick="event.stopPropagation();updateCompletion(${id})">
+                <button onclick="event.stopPropagation();updatePinned(${id})">
             `;
             !note.pinned &&
                 (html += `
@@ -283,13 +287,14 @@ function editNoteButton(id) {
     });
 }
 
+// Cancel update of note
 function cancelUpdate() {
     clearForm();
     noteEditor.classList.add("hidden");
 }
 
-// Update completion
-function updateCompletion(id) {
+// Update pinned status
+function updatePinned(id) {
     api.get(id).then((note) => {
         if (note) {
             const updatedNote = {
