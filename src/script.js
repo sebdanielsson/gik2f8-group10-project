@@ -123,7 +123,7 @@ function renderNotes() {
                 noteList.innerHTML = `<li class="list-none text-center py-3"><span class="text-xl text-black dark:text-yellow-50">No notes added.</span></li>`;
             } else if (notes && notes.length > 0) {
                 // Sort notes by last edit
-                notes.sort((a, b) => {
+                notes.sort((b, a) => {
                     const dateA = new Date(a.editDate);
                     const dateB = new Date(b.editDate);
                     if (dateA < dateB) {
