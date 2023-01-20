@@ -55,7 +55,7 @@ themeDark.addEventListener("click", () => {
 });
 
 // Create new API instance
-const api = new Api("https://gik2f8-group10-project.herokuapp.com/notes");
+const api = new Api("/notes");
 
 // Load notes on page load
 window.addEventListener("load", () => {
