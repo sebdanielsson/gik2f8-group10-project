@@ -25,3 +25,9 @@
 2. Start the server with: `npm run build && npm run start`
 
 3. Go to <http://localhost> to test the project.
+
+Tip: If you run this with Live Server on VSCode, disable auto reload:
+
+```
+"liveServer.settings.ignoreFiles": ["**/*.json"],
+```
