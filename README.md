@@ -1,8 +1,6 @@
-# Project for course GIK2F8 - Group 10
+# GIK2F8 Project Assignment
 
 ## Homepage
-
-<https://sebdanielsson.github.io/gik2f8-group10-project>
 
 <https://gik2f8-group10-project.herokuapp.com>
 
@@ -26,4 +24,4 @@
 
 2. Start the server with: `npm run build && npm run start`
 
-3. Go to http://localhost to test the project.
+3. Go to <http://localhost> to test the project.
