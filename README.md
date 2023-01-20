@@ -2,7 +2,7 @@
 
 ## Homepage
 
-<https://gik2f8-group10-project.herokuapp.com>
+[https://gik2f8-group10-project.herokuapp.com](https://gik2f8-h21sebda-project.herokuapp.com)
 
 ## Features
 
