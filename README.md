@@ -19,3 +19,11 @@
 
 * Syntax highlighting
 * API authentication with OAuth
+
+## Usage
+
+1. Clone the repo
+
+2. Start the server with: `npm run build && npm run start`
+
+3. Go to http://localhost to test the project.
