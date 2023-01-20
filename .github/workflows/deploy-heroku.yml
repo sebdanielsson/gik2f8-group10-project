@@ -11,7 +11,7 @@ jobs:
         name: Deploy to Heroku
         runs-on: ubuntu-22.04
         steps:
-            - uses: actions/checkout@v3.1.0
+            - uses: actions/checkout@v3.3.0
             - name: Deploy to Heroku
               uses: akhileshns/heroku-deploy@v3.12.12
               with:
