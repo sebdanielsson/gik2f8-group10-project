@@ -1,126 +1,168 @@
 <!DOCTYPE html>
 <html lang="en" class="min-h-screen">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#ca8a04" />
-        <link rel="icon" type="image/webp" href="./notes.webp" />
-        <link rel="apple-touch-icon" href="./notes.webp" />
-        <link href="./output.css" rel="stylesheet" />
-        <link href="./github-markdown-dark.css" rel="stylesheet" />
-        <link href="./github-markdown-light.css" rel="stylesheet" />
-        <title>Notes.app</title>
-        <style>
-            @font-face {
-                font-family: "Wendy One";
-                src: url("./WendyOne-Regular.ttf");
-            }
-        </style>
-        <script>
-            if (localStorage.getItem("theme") === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-                document.documentElement.classList.add("dark");
-            } else {
-                document.documentElement.classList.remove("dark");
-            }
-        </script>
-    </head>
 
-    <body class="flex flex-col mx-4 mb-4 place-items-center bg-gradient-to-t from-yellow-300 via-yellow-400 to-yellow-600">
-        <div class="flex flex-row">
-            <h1 class="my-4 font-['Wendy_One'] text-4xl md:text-5xl text-yellow-900">Notes.app</h1>
-            <div class="flex flex-row place-items-center absolute right-4 top-4 gap-3 z-10">
-                <div class="group">
-                    <button title="Theme Switcher" class="text-white font-medium rounded-lg text-sm" type="button">
-                        <span class="dark:hidden">
-                            <svg viewBox="0 0 22 22" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
-                                <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" class="fill-rose-500/20 stroke-white"></path>
-                                <path d="M12 4v1M17.66 6.344l-.828.828M20.005 12.004h-1M17.66 17.664l-.828-.828M12 20.01V19M6.34 17.664l.835-.836M3.995 12.004h1.01M6 6l.835.836" class="stroke-white"></path>
-                            </svg>
-                        </span>
-                        <span class="hidden dark:inline">
-                            <svg viewBox="0 0 22 22" fill="none" class="w-6 h-6">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z" class="fill-gray-900/10"></path>
-                                <path d="m17.715 15.15.95.316a1 1 0 0 0-1.445-1.185l.495.869ZM9 6.035l.846.534a1 1 0 0 0-1.14-1.49L9 6.035Zm8.221 8.246a5.47 5.47 0 0 1-2.72.718v2a7.47 7.47 0 0 0 3.71-.98l-.99-1.738Zm-2.72.718A5.5 5.5 0 0 1 9 9.5H7a7.5 7.5 0 0 0 7.5 7.5v-2ZM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47 0 0 0 7 9.5h2Zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2Zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2Zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552 0 6.553-2.327 7.622-5.537l-1.897-.632Z" class="fill-white"></path>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 0 1 1 1 2 2 0 0 0 2 2 1 1 0 1 1 0 2 2 2 0 0 0-2 2 1 1 0 1 1-2 0 2 2 0 0 0-2-2 1 1 0 1 1 0-2 2 2 0 0 0 2-2 1 1 0 0 1 1-1Z" class="fill-white"></path>
-                            </svg>
-                        </span>
-                    </button>
-                    <div id="dropdown" class="hidden group-hover:block absolute -left-1/2 group-hover:text-white bg-white rounded dark:bg-[#2D221D]/80 backdrop-blur-lg backdrop-saturate-[0.85]">
-                        <ul class="font-semibold text-sm text-gray-700 dark:text-gray-200">
-                            <li class="list-none">
-                                <a href="#" id="theme-system" class="flex items-center py-2 px-2 hover:text-slate-400 dark:hover:text-slate-400">
-                                    <svg viewBox="0 0 24 24" fill="none" class="w-6 h-6 mr-2">
-                                        <path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z" stroke-width="2" stroke-linejoin="round" class="stroke-slate-400 dark:stroke-slate-400"></path>
-                                        <path d="M14 15c0 3 2 5 2 5H8s2-2 2-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stroke-slate-300 dark:stroke-slate-400"></path>
-                                    </svg>
-                                    System
-                                </a>
-                            </li>
-                            <li class="list-none">
-                                <a href="#" id="theme-light" class="flex items-center py-2 px-2 hover:text-slate-400 dark:hover:text-slate-400">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2">
-                                        <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" class="fill-slate-400/0 stroke-slate-400"></path>
-                                        <path d="M12 4v1M17.66 6.344l-.828.828M20.005 12.004h-1M17.66 17.664l-.828-.828M12 20.01V19M6.34 17.664l.835-.836M3.995 12.004h1.01M6 6l.835.836" class="stroke-slate-400"></path>
-                                    </svg>
-                                    Light
-                                </a>
-                            </li>
-                            <li class="list-none">
-                                <a href="#" id="theme-dark" class="flex items-center py-2 px-2 hover:text-slate-400 dark:hover:text-slate-400">
-                                    <svg viewBox="0 0 24 24" fill="none" class="w-6 h-6 mr-2">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z" class="fill-transparent"></path>
-                                        <path d="m17.715 15.15.95.316a1 1 0 0 0-1.445-1.185l.495.869ZM9 6.035l.846.534a1 1 0 0 0-1.14-1.49L9 6.035Zm8.221 8.246a5.47 5.47 0 0 1-2.72.718v2a7.47 7.47 0 0 0 3.71-.98l-.99-1.738Zm-2.72.718A5.5 5.5 0 0 1 9 9.5H7a7.5 7.5 0 0 0 7.5 7.5v-2ZM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47 0 0 0 7 9.5h2Zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2Zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2Zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552 0 6.553-2.327 7.622-5.537l-1.897-.632Z" class="fill-slate-400 dark:fill-slate-400"></path>
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 0 1 1 1 2 2 0 0 0 2 2 1 1 0 1 1 0 2 2 2 0 0 0-2 2 1 1 0 1 1-2 0 2 2 0 0 0-2-2 1 1 0 1 1 0-2 2 2 0 0 0 2-2 1 1 0 0 1 1-1Z" class="fill-slate-400 dark:fill-slate-400"></path>
-                                    </svg>
-                                    Dark
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ca8a04" />
+    <link rel="icon" type="image/webp" href="./notes.webp" />
+    <link rel="apple-touch-icon" href="./notes.webp" />
+    <link href="./output.css" rel="stylesheet" />
+    <link href="./github-markdown.css" rel="stylesheet" />
+    <title>Notes.app</title>
+    <style>
+        @font-face {
+            font-family: "Wendy One";
+            src: url("./WendyOne-Regular.ttf");
+        }
+    </style>
+    <script>
+        if (localStorage.getItem("theme") === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+    </script>
+</head>
+
+<body class="flex flex-col mx-4 mb-4 place-items-center bg-gradient-to-t from-yellow-300 via-yellow-400 to-yellow-600">
+    <div class="flex flex-row">
+        <h1 class="my-4 font-['Wendy_One'] text-4xl md:text-5xl text-yellow-900">Notes.app</h1>
+        <div class="flex flex-row place-items-center absolute right-4 top-4 gap-3 z-10">
+            <div class="group">
+                <button title="Theme Switcher" class="text-white font-medium rounded-lg text-sm" type="button">
+                    <span class="dark:hidden">
+                        <svg viewBox="0 0 22 22" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="w-6 h-6">
+                            <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" class="fill-rose-500/20 stroke-white"></path>
+                            <path
+                                d="M12 4v1M17.66 6.344l-.828.828M20.005 12.004h-1M17.66 17.664l-.828-.828M12 20.01V19M6.34 17.664l.835-.836M3.995 12.004h1.01M6 6l.835.836"
+                                class="stroke-white"></path>
+                        </svg>
+                    </span>
+                    <span class="hidden dark:inline">
+                        <svg viewBox="0 0 22 22" fill="none" class="w-6 h-6">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z"
+                                class="fill-gray-900/10"></path>
+                            <path
+                                d="m17.715 15.15.95.316a1 1 0 0 0-1.445-1.185l.495.869ZM9 6.035l.846.534a1 1 0 0 0-1.14-1.49L9 6.035Zm8.221 8.246a5.47 5.47 0 0 1-2.72.718v2a7.47 7.47 0 0 0 3.71-.98l-.99-1.738Zm-2.72.718A5.5 5.5 0 0 1 9 9.5H7a7.5 7.5 0 0 0 7.5 7.5v-2ZM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47 0 0 0 7 9.5h2Zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2Zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2Zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552 0 6.553-2.327 7.622-5.537l-1.897-.632Z"
+                                class="fill-white"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M17 3a1 1 0 0 1 1 1 2 2 0 0 0 2 2 1 1 0 1 1 0 2 2 2 0 0 0-2 2 1 1 0 1 1-2 0 2 2 0 0 0-2-2 1 1 0 1 1 0-2 2 2 0 0 0 2-2 1 1 0 0 1 1-1Z"
+                                class="fill-white"></path>
+                        </svg>
+                    </span>
+                </button>
+                <div id="dropdown"
+                    class="hidden group-hover:block absolute -left-1/2 group-hover:text-white bg-white rounded dark:bg-[#2D221D]/80 backdrop-blur-lg backdrop-saturate-[0.85]">
+                    <ul class="font-semibold text-sm text-gray-700 dark:text-gray-200">
+                        <li class="list-none">
+                            <a href="#" id="theme-system"
+                                class="flex items-center py-2 px-2 hover:text-slate-400 dark:hover:text-slate-400">
+                                <svg viewBox="0 0 24 24" fill="none" class="w-6 h-6 mr-2">
+                                    <path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z"
+                                        stroke-width="2" stroke-linejoin="round"
+                                        class="stroke-slate-400 dark:stroke-slate-400"></path>
+                                    <path d="M14 15c0 3 2 5 2 5H8s2-2 2-5" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="stroke-slate-300 dark:stroke-slate-400"></path>
+                                </svg>
+                                System
+                            </a>
+                        </li>
+                        <li class="list-none">
+                            <a href="#" id="theme-light"
+                                class="flex items-center py-2 px-2 hover:text-slate-400 dark:hover:text-slate-400">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-6 h-6 mr-2">
+                                    <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                                        class="fill-slate-400/0 stroke-slate-400"></path>
+                                    <path
+                                        d="M12 4v1M17.66 6.344l-.828.828M20.005 12.004h-1M17.66 17.664l-.828-.828M12 20.01V19M6.34 17.664l.835-.836M3.995 12.004h1.01M6 6l.835.836"
+                                        class="stroke-slate-400"></path>
+                                </svg>
+                                Light
+                            </a>
+                        </li>
+                        <li class="list-none">
+                            <a href="#" id="theme-dark"
+                                class="flex items-center py-2 px-2 hover:text-slate-400 dark:hover:text-slate-400">
+                                <svg viewBox="0 0 24 24" fill="none" class="w-6 h-6 mr-2">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z"
+                                        class="fill-transparent"></path>
+                                    <path
+                                        d="m17.715 15.15.95.316a1 1 0 0 0-1.445-1.185l.495.869ZM9 6.035l.846.534a1 1 0 0 0-1.14-1.49L9 6.035Zm8.221 8.246a5.47 5.47 0 0 1-2.72.718v2a7.47 7.47 0 0 0 3.71-.98l-.99-1.738Zm-2.72.718A5.5 5.5 0 0 1 9 9.5H7a7.5 7.5 0 0 0 7.5 7.5v-2ZM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47 0 0 0 7 9.5h2Zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2Zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2Zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552 0 6.553-2.327 7.622-5.537l-1.897-.632Z"
+                                        class="fill-slate-400 dark:fill-slate-400"></path>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M17 3a1 1 0 0 1 1 1 2 2 0 0 0 2 2 1 1 0 1 1 0 2 2 2 0 0 0-2 2 1 1 0 1 1-2 0 2 2 0 0 0-2-2 1 1 0 1 1 0-2 2 2 0 0 0 2-2 1 1 0 0 1 1-1Z"
+                                        class="fill-slate-400 dark:fill-slate-400"></path>
+                                </svg>
+                                Dark
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <a href="https://github.com/SebDanielsson/gik2f8-group10-project" target="_blank" rel="noopener" class="text-white hover:opacity-80" aria-label="GitHub repository">
-                    <svg viewBox="0 0 18 18" class="w-6 h-6" fill="currentColor" aria-hidden="true">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+            </div>
+            <a href="https://github.com/SebDanielsson/gik2f8-group10-project" target="_blank" rel="noopener"
+                class="text-white hover:opacity-80" aria-label="GitHub repository">
+                <svg viewBox="0 0 18 18" class="w-6 h-6" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <main class="flex flex-grow flex-col md:flex-row w-full md:w-10/12 1680:w-9/12 1920:w-8/12">
+        <div
+            class="flex flex-col gap-2 md:w-4/12 1920:w-3/12 p-4 rounded-t-lg md:rounded-r-none md:rounded-l-lg bg-[#F2EDEC]/30 dark:bg-[#2D221D]/30 backdrop-blur-lg backdrop-saturate-[0.85]">
+            <div class="flex flex-row">
+                <h2 class="text-2xl text-black dark:text-yellow-50">Notes</h2>
+                <button onclick="showAddFormButton()" type="button" title="Add note"
+                    class="ml-auto text-black dark:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
-                </a>
+                </button>
+            </div>
+            <ul id="noteList" class="flex flex-col gap-2 rounded-lg"></ul>
+        </div>
+        <div
+            class="flex flex-col gap-2 md:w-8/12 1920:w-9/12 p-4 rounded-b-lg md:rounded-l-none md:rounded-r-lg bg-slate-50 dark:bg-[#2D221D]">
+            <div id="notePreview" class="flex flex-col text-slate-800 dark:text-slate-300">
+                <p class="text-sm text-center">Notes can be formatted with markdown.</p>
+            </div>
+            <div id="noteEditor" class="hidden flex-col gap-2">
+                <form id="noteForm" name="noteForm" class="flex flex-col gap-2">
+                    <textarea title="Note editor" type="text" id="contentField" name="contentField" rows="8"
+                        class="h-48 select-none w-full block rounded-lg border p-4 text-base text-slate-700 dark:text-white bg-slate-100 border-slate-300 dark:border-opacity-40 placeholder-slate-300 dark:placeholder-slate-200 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:ring-offset-1 ring-offset-slate-400 dark:bg-white dark:bg-opacity-5 dark:backdrop-blur-lg dark:backdrop-saturate-[0.85]"></textarea>
+                    <span id="contentWarning" class="hidden text-sm text-rose-900 dark:text-rose-100">Empty note is not
+                        allowed.</span>
+                </form>
+                <div id="submitFormContainer" class="flex flex-row gap-2 basis-auto">
+                    <button onclick="addNoteButton()" type="button" form="noteForm" id="addButton" name="addButton"
+                        class="w-full inline-flex items-center rounded-md border border-transparent bg-slate-800 px-4 py-3 text-sm font-medium text-white shadow-sm hover:bg-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:ring-offset-1 ring-offset-slate-400">
+                        <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        Add
+                    </button>
+                    <button type="button" form="noteForm" id="updateButton"
+                        class="w-full hidden px-4 py-3 text-sm font-medium text-red-100 transition-colors duration-150 bg-yellow-500 hover:bg-yellow-600 rounded-lg">Update</button>
+                    <button onclick="cancelUpdate()" type="button" form="noteForm" id="cancelUpdateButton"
+                        class="w-full px-4 py-3 text-sm font-medium text-red-100 transition-colors duration-150 bg-red-800 hover:bg-red-700 rounded-lg">Cancel</button>
+                </div>
             </div>
         </div>
-        <main class="flex flex-grow flex-col md:flex-row w-full md:w-10/12 1680:w-9/12 1920:w-8/12">
-            <div class="flex flex-col gap-2 md:w-4/12 1920:w-3/12 p-4 rounded-t-lg md:rounded-r-none md:rounded-l-lg bg-[#F2EDEC]/30 dark:bg-[#2D221D]/30 backdrop-blur-lg backdrop-saturate-[0.85]">
-                <div class="flex flex-row">
-                    <h2 class="text-2xl text-black dark:text-yellow-50">Notes</h2>
-                    <button onclick="showAddFormButton()" type="button" title="Add note" class="ml-auto text-black dark:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
-                    </button>
-                </div>
-                <ul id="noteList" class="flex flex-col gap-2 rounded-lg"></ul>
-            </div>
-            <div class="flex flex-col gap-2 md:w-8/12 1920:w-9/12 p-4 rounded-b-lg md:rounded-l-none md:rounded-r-lg bg-slate-50 dark:bg-[#2D221D]">
-                <div id="notePreview" class="flex flex-col text-slate-800 dark:text-slate-300">
-                    <p class="text-sm text-center">Notes can be formatted with markdown.</p>
-                </div>
-                <div id="noteEditor" class="hidden flex-col gap-2">
-                    <form id="noteForm" name="noteForm" class="flex flex-col gap-2">
-                        <textarea title="Note editor" type="text" id="contentField" name="contentField" rows="8" class="h-48 select-none w-full block rounded-lg border p-4 text-base text-slate-700 dark:text-white bg-slate-100 border-slate-300 dark:border-opacity-40 placeholder-slate-300 dark:placeholder-slate-200 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:ring-offset-1 ring-offset-slate-400 dark:bg-white dark:bg-opacity-5 dark:backdrop-blur-lg dark:backdrop-saturate-[0.85]"></textarea>
-                        <span id="contentWarning" class="hidden text-sm text-rose-900 dark:text-rose-100">Empty note is not allowed.</span>
-                    </form>
-                    <div id="submitFormContainer" class="flex flex-row gap-2 basis-auto">
-                        <button onclick="addNoteButton()" type="button" form="noteForm" id="addButton" name="addButton" class="w-full inline-flex items-center rounded-md border border-transparent bg-slate-800 px-4 py-3 text-sm font-medium text-white shadow-sm hover:bg-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:ring-offset-1 ring-offset-slate-400">
-                            <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-                            </svg>
-                            Add
-                        </button>
-                        <button type="button" form="noteForm" id="updateButton" class="w-full hidden px-4 py-3 text-sm font-medium text-red-100 transition-colors duration-150 bg-yellow-500 hover:bg-yellow-600 rounded-lg">Update</button>
-                        <button onclick="cancelUpdate()" type="button" form="noteForm" id="cancelUpdateButton" class="w-full px-4 py-3 text-sm font-medium text-red-100 transition-colors duration-150 bg-red-800 hover:bg-red-700 rounded-lg">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </main>
-        <script src="Api.js"></script>
-        <script src="script.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    </body>
+    </main>
+    <script src="Api.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</body>
+
 </html>
