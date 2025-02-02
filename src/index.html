@@ -25,7 +25,7 @@
     </script>
 </head>
 
-<body class="flex flex-col mx-4 mb-4 place-items-center bg-gradient-to-t from-yellow-300 via-yellow-400 to-yellow-600">
+<body class="flex flex-col mx-4 mb-4 place-items-center bg-linear-to-t from-yellow-300 via-yellow-400 to-yellow-600">
     <div class="flex flex-row">
         <h1 class="my-4 font-['Wendy_One'] text-4xl md:text-5xl text-yellow-900">Notes.app</h1>
         <div class="flex flex-row place-items-center absolute right-4 top-4 gap-3 z-10">
@@ -55,7 +55,7 @@
                     </span>
                 </button>
                 <div id="dropdown"
-                    class="hidden group-hover:block absolute -left-1/2 group-hover:text-white bg-white rounded dark:bg-[#2D221D]/80 backdrop-blur-lg backdrop-saturate-[0.85]">
+                    class="hidden group-hover:block absolute -left-1/2 group-hover:text-white bg-white rounded-sm dark:bg-[#2D221D]/80 backdrop-blur-lg backdrop-saturate-[0.85]">
                     <ul class="font-semibold text-sm text-gray-700 dark:text-gray-200">
                         <li class="list-none">
                             <a href="#" id="theme-system"
@@ -114,7 +114,7 @@
             </a>
         </div>
     </div>
-    <main class="flex flex-grow flex-col md:flex-row w-full md:w-10/12 1680:w-9/12 1920:w-8/12">
+    <main class="flex grow flex-col md:flex-row w-full md:w-10/12 1680:w-9/12 1920:w-8/12">
         <div
             class="flex flex-col gap-2 md:w-4/12 1920:w-3/12 p-4 rounded-t-lg md:rounded-r-none md:rounded-l-lg bg-[#F2EDEC]/30 dark:bg-[#2D221D]/30 backdrop-blur-lg backdrop-saturate-[0.85]">
             <div class="flex flex-row">
@@ -137,13 +137,13 @@
             <div id="noteEditor" class="hidden flex-col gap-2">
                 <form id="noteForm" name="noteForm" class="flex flex-col gap-2">
                     <textarea title="Note editor" type="text" id="contentField" name="contentField" rows="8"
-                        class="h-48 select-none w-full block rounded-lg border p-4 text-base text-slate-700 dark:text-white bg-slate-100 border-slate-300 dark:border-opacity-40 placeholder-slate-300 dark:placeholder-slate-200 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:ring-offset-1 ring-offset-slate-400 dark:bg-white dark:bg-opacity-5 dark:backdrop-blur-lg dark:backdrop-saturate-[0.85]"></textarea>
+                        class="h-48 select-none w-full block rounded-lg border p-4 text-base text-slate-700 dark:text-white bg-slate-100 border-slate-300 dark:border-opacity-40 placeholder-slate-300 dark:placeholder-slate-200 focus:outline-hidden focus:ring-1 focus:ring-slate-500 focus:ring-offset-1 ring-offset-slate-400 dark:bg-white dark:bg-opacity-5 dark:backdrop-blur-lg dark:backdrop-saturate-[0.85]"></textarea>
                     <span id="contentWarning" class="hidden text-sm text-rose-900 dark:text-rose-100">Empty note is not
                         allowed.</span>
                 </form>
                 <div id="submitFormContainer" class="flex flex-row gap-2 basis-auto">
                     <button onclick="addNoteButton()" type="button" form="noteForm" id="addButton" name="addButton"
-                        class="w-full inline-flex items-center rounded-md border border-transparent bg-slate-800 px-4 py-3 text-sm font-medium text-white shadow-sm hover:bg-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:ring-offset-1 ring-offset-slate-400">
+                        class="w-full inline-flex items-center rounded-md border border-transparent bg-slate-800 px-4 py-3 text-sm font-medium text-white shadow-xs hover:bg-slate-900 focus:outline-hidden focus:ring-1 focus:ring-slate-500 focus:ring-offset-1 ring-offset-slate-400">
                         <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                             fill="currentColor" aria-hidden="true">
                             <path fill-rule="evenodd"

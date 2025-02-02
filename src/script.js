@@ -64,7 +64,7 @@ window.addEventListener("load", () => {
 
 // Validate fields
 noteForm.contentField.addEventListener("input", (e) => validateForm(e.target));
-noteForm.contentField.addEventListener("blur", (e) => validateForm(e.target));
+noteForm.contentField.addEventListener("blur-sm", (e) => validateForm(e.target));
 
 let contentValid = false;
 function validateForm(field) {
@@ -244,7 +244,7 @@ function previewNoteHTML(id) {
                 </button>
                 </div>
                 </div>
-                <div id="content" class="markdown-body !bg-transparent overflow-x-scroll">
+                <div id="content" class="markdown-body bg-transparent! overflow-x-scroll">
             `;
             html += marked.parse(note.content);
             html += `

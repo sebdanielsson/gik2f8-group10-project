@@ -1,17 +1,13 @@
 import express from "express";
-// const express = require('express'); // commonjs module
 import fs from "fs/promises";
-// const fs = require('fs/promises'); // commonjs module
-
-var escape = require('escape-html');
+import { rateLimit } from "express-rate-limit";
 
 const app = express();
 const port = process.env.PORT || 80;
 const notesJSON = "./notes.json";
 
 // Rate limiter
-var RateLimit = require('express-rate-limit');
-var limiter = RateLimit({
+var limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 100, // max 100 requests per windowMs
 });
@@ -60,7 +56,7 @@ app.get("/notes/:id", async (req, res) => {
         const note = currentNotes.find((note) => note.id == req.params.id);
 
         if (!note) {
-            res.status(404).send("Note id " + escape(req.params.id) + " not found.");
+            res.status(404).send("Note id " + req.params.id + " not found.");
         }
 
         res.send(note);
@@ -81,7 +77,7 @@ app.post("/notes", async (req, res) => {
             newNoteId++;
         }
 
-        const newNote = { id: newNoteId, ...escape(req.body) };
+        const newNote = { id: newNoteId, ...req.body };
         const newList = currentNotes ? [...currentNotes, newNote] : [newNote];
 
         await fs.writeFile(notesJSON, JSON.stringify(newList));
@@ -110,7 +106,7 @@ app.put("/notes/:id", async (req, res) => {
 
             await fs.writeFile(notesJSON, JSON.stringify(newList));
 
-            res.send(escape(req.params.id));
+            res.send(req.params.id);
         }
     } catch (err) {
         log("Exception occurred", err.stack);
@@ -127,7 +123,7 @@ app.delete("/notes/:id", async (req, res) => {
         } else {
             const newList = currentNotes.filter((note) => note.id != req.params.id);
             await fs.writeFile(notesJSON, JSON.stringify(newList));
-            res.send("Note id " + escape(req.params.id) + " deleted.");
+            res.send("Note id " + req.params.id + " deleted.");
         }
     } catch (err) {
         log("Exception occurred", err.stack);
