@@ -19,7 +19,7 @@
   "dependencies": {
     "escape-html": "^1.0.3",
     "express": "^5.3.0",
-    "express-rate-limit": "^8.7.1",
+    "express-rate-limit": "^8.7.2",
     "@tailwindcss/cli": "^4.3.3"
   },
   "devDependencies": {
